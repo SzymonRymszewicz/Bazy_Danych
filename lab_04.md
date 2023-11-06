@@ -38,3 +38,15 @@ ALTER TABLE izba ADD kolor_izby VARCHAR(50) DEFAULT "czarny" AFTER metraz;
 INSERT INTO izba VALUES ("Bjornowa 4", "spizarnia", 45, "czarny", 1);
 
 ```
+
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/54b3e104-35cb-47ea-85c1-602259d0e221)
+
+**Rozwiązanie:**
+
+```sql
+
+CREATE TABLE przetwory (id_przetworu INT, rok_produkcji SMALLINT DEFAULT "1654", id_wykonawcy INT, zawartosc VARCHAR(100), dodatek VARCHAR(100) DEFAULT "papryczka chilli", id_konsumenta INT, PRIMARY KEY(id_przetworu), FOREIGN KEY(id_wykonawcy) REFERENCES postac(id_postaci), FOREIGN KEY(id_konsumenta) REFERENCES postac(id_postaci));
+INSERT INTO przetwory VALUES (1, 1352, 1, "rzeczy", "czosnek", 3);
+
+
+```
