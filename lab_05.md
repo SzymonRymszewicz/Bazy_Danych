@@ -15,3 +15,19 @@ alter table przetwory drop foreign key przetwory_ibfk_2;
 alter table postac drop primary key;
 
 ```
+
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/f2b8bee9-ba89-41de-80d9-7e85c7b67c46)
+
+**Rozwiązanie:**
+
+```sql
+
+alter table postac add pesel char(11) first;
+update postac set pesel='12345678912' + id_postaci;
+alter table postac modify pesel char(11) primary key;
+
+alter table postac modify rodzaj enum("wiking", "ptak", "kobieta", "syrena");
+insert into postac VALUES ('98745612378', 115, "Gertruda Nieszczera", "syrena", "432-04-13", 542, null, null);
+
+```
+
