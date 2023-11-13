@@ -4,6 +4,14 @@
 
 ```sql
 
+select * from postac where rodzaj = "wiking" order by wiek desc;
+delete from postac where id_postaci in (15, 18);
 
+set foreign_key_checks = 0;
+alter table postac modify id_postaci int;
+alter table walizka drop foreign key walizka_ibfk_1;
+alter table przetwory drop foreign key przetwory_ibfk_1;
+alter table przetwory drop foreign key przetwory_ibfk_2;
+alter table postac drop primary key;
 
 ```
