@@ -50,3 +50,39 @@ INSERT INTO przetwory VALUES (1, 1352, 1, "rzeczy", "czosnek", 3);
 
 
 ```
+
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/5dfe7174-b8f5-48f6-a706-4187a7f5dbd7)
+
+```sql
+
+insert into postac VALUES 
+(default, "Martar", "wiking", "0923-02-15", 55),
+(default, "Thor", "wiking", "0003-02-15", 1032), 
+(default, "Hjalmar", "wiking", "0943-01-25", 25), 
+(default, "Loki", "wiking", "0973-02-15", 15),
+(default, "Urak", "wiking", "0913-02-15", 91);
+
+create table statek (
+nazwa_statku varchar(200),
+rodzaj_statku ENUM("szybki", "mocny"),
+data_wodowania date,
+max_ladownosc int unsigned, primary key (nazwa_statku));
+
+insert into statek values 
+("Piorun", "szybki", "966-12-01", 20),
+("Twardy", "mocny", "936-02-11", 50);
+
+alter table postac add funkcja varchar(200);
+
+update postac set funkcja = "kapitan" where id_postaci = 1;
+
+alter table postac add statek varchar(200), add foreign key(statek) references statek(nazwa_statku);
+
+update postac inner join statek set postac.statek = statek.nazwa_statku where postac.rodzaj = "wiking" or postac.rodzaj = "ptak" and statek.nazwa_statku = "Piorun";
+
+delete from izba where nazwa_izby = "spizarnia";
+
+drop table izba;
+
+```
+
