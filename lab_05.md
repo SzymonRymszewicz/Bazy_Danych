@@ -48,6 +48,7 @@ alter table postac modify wiek int unsigned check(wiek <= 1000);
 
 ```
 
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/ee445d2d-03f3-4c0f-ac2e-417be29cf668)
 
 
 **Rozwiązanie:**
@@ -58,4 +59,24 @@ alter table postac modify rodzaj enum("wiking", "kobieta", "ptak", "syrena", "wa
 insert into postac values ('82345678918', 666, "Loko", "waz", "0003-12-23", 1032, default, default);
 
 ```
+
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/18b6c5d7-9ded-411e-aa91-4a78ae7270a9)
+
+**Rozwiązanie:**
+
+```sql
+
+update postac set statek=null;
+
+delete from postac where nazwa="Loki";
+
+delete from statek;
+
+alter table postac drop foreign key postac_ibfk_1;
+
+create table zwierz (id int primary key auto_increment,
+nazwa varchar(80), wiek int);
+
+```
+
 
