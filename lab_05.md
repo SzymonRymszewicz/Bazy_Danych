@@ -31,3 +31,31 @@ insert into postac VALUES ('98745612378', 115, "Gertruda Nieszczera", "syrena", 
 
 ```
 
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/8f560807-4437-40ce-bab8-0c6aefa511c8)
+
+**Rozwiązanie:**
+
+```sql
+
+update postac set statek="Piorun"
+where nazwa like '%a%';
+
+update statek set max_ladownosc = max_ladownosc * 0.7
+where data_wodowania between "1901-01-01"
+and "2000-12-31";
+
+alter table postac modify wiek int unsigned check(wiek <= 1000);
+
+```
+
+
+
+**Rozwiązanie:**
+
+```sql
+
+alter table postac modify rodzaj enum("wiking", "kobieta", "ptak", "syrena", "waz");
+insert into postac values ('82345678918', 666, "Loko", "waz", "0003-12-23", 1032, default, default);
+
+```
+
