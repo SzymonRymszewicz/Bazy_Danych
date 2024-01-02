@@ -46,3 +46,16 @@ select idWyprawy, sum(length(dziennik)) from etapy_wyprawy group by idWyprawy;
 
 ```
 
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/20cceaee-abaa-482a-92bd-e28f6bb45e22)
+
+```sql
+
+select k.nazwa, w.nazwa, datediff(w.data_rozpoczecia, k.dataUr) from kreatura k 
+inner join uczestnicy u on u.id_uczestnika=k.idKreatury 
+inner join etapy_wyprawy ew on u.id_wyprawy=ew.idWyprawy
+inner join wyprawa w on w.id_wyprawy=u.id_wyprawy
+where ew.sektor=7
+
+```
+
+
