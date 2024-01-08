@@ -1,4 +1,4 @@
-![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/eeb35279-1462-43a7-8b4d-97a519a7551d)
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/91916141-0025-45b6-b7c6-eb7dc923808f)
 
 **Rozwiązanie:**
 
@@ -104,4 +104,30 @@ order by wartosc desc;
 
 ```
 
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/514dda15-71ae-4d5a-833a-187c1902bae6)
+
+**Rozwiązanie:**
+
+```sql
+
+select d.nazwa, min(p.pensja), max(p.pensja), avg(p.pensja) from pracownik p
+inner join dzial d on p.dzial = d.id_dzialu
+group by d.id_dzialu;
+
+```
+
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/e9eae21c-f1a8-405c-91de-3fa51756da1f)
+
+**Rozwiązanie:**
+
+```sql
+
+select k.pelna_nazwa, z.numer_zamowienia, sum(pz.ilosc * pz.cena) as wartosc
+from zamowienie z
+inner join pozycja_zamowienia pz on z.id_zamowienia = pz.zamowienie
+inner join klient k on k.id_klienta = z.klient
+group by k.id_klienta, z.id_zamowienia
+order by wartosc desc limit 10;
+
+```
 
