@@ -54,7 +54,54 @@ select k.nazwa_kategori, group_concat(t.nazwa_towaru) from kategoria k inner joi
 
 ```sql
 
-
+select round(avg(pensja), 2) from pracownik;
 
 ```
+
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/c8606bee-cc9d-4461-b3b2-2f1f9279315d)
+
+**Rozwiązanie:**
+
+```sql
+
+select round(avg(pensja), 2) from pracownik where year(curdate()) - year(data_zatrudnienia) >= 5;
+
+```
+
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/8bf4a379-a09a-4232-ab74-b114aa01c786)
+
+**Rozwiązanie:**
+
+```sql
+
+select towar, count(zamowienie) from pozycja_zamowienia group by towar order by count(zamowienie) desc limit 10;
+
+```
+
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/b0435ede-3dec-43b8-9089-b09cb4961b1d)
+
+**Rozwiązanie:**
+
+```sql
+
+select z.numer_zamowienia, sum(pz.ilosc * pz.cena) from zamowienie z 
+inner join pozycja_zamowienia pz on z.id_zamowienia = pz.zamowienie 
+where year(z.data_zamowienia)=2017 and quarter(z.data_zamowienia) = 1 group by z.id_zamowienia;
+
+```
+
+![image](https://github.com/SzymonRymszewicz/Bazy_Danych/assets/147385726/99286e7b-6bcd-4aa6-a479-9e0ac50e10e8)
+
+**Rozwiązanie:**
+
+```sql
+
+select p.imie, p.nazwisko, sum(pz.ilosc * pz.cena) as wartosc from zamowienie z 
+inner join pozycja_zamowienia pz on z.id_zamowienia = pz.zamowienie 
+inner join pracownik p on p.id_pracownika = z.pracownik_id_pracownika
+group by p.id_pracownika
+order by wartosc desc;
+
+```
+
 
